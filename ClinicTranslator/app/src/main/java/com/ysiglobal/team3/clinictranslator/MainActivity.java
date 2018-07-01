@@ -1,8 +1,11 @@
 package com.ysiglobal.team3.clinictranslator;
 
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -14,7 +17,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Locale;
 import java.util.Queue;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +31,49 @@ public class MainActivity extends AppCompatActivity {
     private String PatientLanguage = null;
 
     private Queue<Pair<Integer, Integer>> chatQueue;
+
+    private HashMap<String, String> language_codes_map = new HashMap<>();
+
+    public void setLanguageCodesMap() {
+        language_codes_map.put("German", "de");
+        language_codes_map.put("Chinese", "zh");
+        language_codes_map.put("Czech", "cs");
+        language_codes_map.put("Dutch", "nl");
+        language_codes_map.put("French", "fr");
+        language_codes_map.put("Italian", "it");
+        language_codes_map.put("Japanese", "ja");
+        language_codes_map.put("Korean", "ko");
+        language_codes_map.put("Polish", "pl");
+        language_codes_map.put("Russian", "ru");
+        language_codes_map.put("Spanish", "es");
+        language_codes_map.put("Arabic", "ar");
+        language_codes_map.put("Bulgarian", "bg");
+        language_codes_map.put("Catalan", "ca");
+        language_codes_map.put("Croatian", "hr");
+        language_codes_map.put("Danish", "da");
+        language_codes_map.put("Finnish", "fi");
+        language_codes_map.put("Greek", "el");
+        language_codes_map.put("Hebrew", "iw");
+        language_codes_map.put("Hindi", "hi");
+        language_codes_map.put("Hungarian", "hu");
+        language_codes_map.put("Indonesian", "in");
+        language_codes_map.put("Latvian", "lv");
+        language_codes_map.put("Lithuanian", "lt");
+        language_codes_map.put("Norwegian", "nb");
+        language_codes_map.put("Portuguese", "pt");
+        language_codes_map.put("Romanian", "ro");
+        language_codes_map.put("Serbian", "sr");
+        language_codes_map.put("Slovak", "sk");
+        language_codes_map.put("Slovenian", "sl");
+        language_codes_map.put("Swedish", "sv");
+        language_codes_map.put("Tagalog", "tl");
+        language_codes_map.put("Thai", "th");
+        language_codes_map.put("Turkish", "tr");
+        language_codes_map.put("Ukrainian", "uk");
+        language_codes_map.put("Vietnamese", "vi");
+        language_codes_map.put("English", "en");
+        language_codes_map.put("Afrikaans", "af");
+    }
 
     public void queueNextItems(String response) {
         Resources resources = getResources();
@@ -58,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         activityState = Boolean.FALSE;
         chatQueue = new LinkedList<>();
 
+        setLanguageCodesMap();
         Spinner spinnerDoctor = findViewById(R.id.spinnerDoctorLanguage);
         Spinner spinnerPatient = findViewById(R.id.spinnerPatientLanguage);
 
@@ -82,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected void selectLanguage(View v) {
+    public void selectLanguage(View v) {
         if(activityState){
             Button button = findViewById(R.id.goButton);
             button.setText(getString(R.string.submitLanguage));
@@ -152,5 +201,21 @@ public class MainActivity extends AppCompatActivity {
 
             conversation.invalidate();
         }
+    }
+
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+        finish();
+    }
+
+    public void translate(View v) {
+        setLocale(language_codes_map.get(DoctorLanguage));
     }
 }
