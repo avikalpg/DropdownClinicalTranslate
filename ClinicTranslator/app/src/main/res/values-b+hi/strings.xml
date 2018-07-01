@@ -10,8 +10,6 @@
         <item>हिंदी</item>
         <item>अफ्रीकी</item>
         <item>पुर्तगाली</item>
-        <item>स्पेनिश</item>
-        <item>जर्मन</item>
     </string-array>
     <string name="submitLanguage">प्रारंभ</string>
     <string name="resetButton">पुनर्प्रारंभ</string>
