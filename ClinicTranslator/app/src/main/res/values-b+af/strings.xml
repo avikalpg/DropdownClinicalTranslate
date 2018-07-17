@@ -19,31 +19,31 @@
     <string-array name="primary_ailment_array">
         <item></item>
         <item>hoofpyn</item>
-        <item>Stomachache</item>
-        <item>Injury</item>
-        <item>Cold</item>
-        <item>Fever</item>
+        <item>Maagpyn</item>
+        <item>besering</item>
+        <item>koue</item>
+        <item>koors</item>
     </string-array>
 
     <string name="headache_question_1">Since when have you been experiencing headache?</string>
     <string-array name="durations_array">
         <item></item>
-        <item>less than a day</item>
-        <item>1 day</item>
-        <item>2 days</item>
-        <item>3\-4 days</item>
-        <item>5\-7 days</item>
-        <item>1\-2 weeks</item>
-        <item>2\-4 weeks</item>
-        <item>1 month</item>
-        <item>2 months</item>
-        <item>3 months</item>
-        <item>4\-6 months</item>
-        <item>7\-12 months</item>
-        <item>1 year</item>
-        <item>2 years</item>
-        <item>3\-5 years</item>
-        <item>more than 5 years</item>
+        <item>minder as 'n dag</item>
+        <item>1 dag</item>
+        <item>2 dae</item>
+        <item>3\-4 dae</item>
+        <item>5\-7 dae</item>
+        <item>1\-2 weke</item>
+        <item>2\-4 weke</item>
+        <item>1 maand</item>
+        <item>2 maande</item>
+        <item>3 maande</item>
+        <item>4\-6 maande</item>
+        <item>7\-12 maande</item>
+        <item>1 jaar</item>
+        <item>2 jaar</item>
+        <item>3\-5 jaar</item>
+        <item>meer as 5 jaar</item>
     </string-array>
 
     <string name="headache_question_2">Where exactly do you feel the pain?</string>
