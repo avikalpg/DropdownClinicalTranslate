@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Clinic Translator</string>
+    <string name="app_name">चिकित्सालय अनुवादक</string>
 
     <string name="doc_language_prompt">चिकित्सक की भाषा चुनें</string>
     <string name="patient_language_prompt">मरीज की भाषा चुनें</string>
@@ -28,40 +28,40 @@
     <string name="headache_question_1">आप कब से सिरदर्द का अनुभव कर रहे हैं?</string>
     <string-array name="durations_array">
         <item></item>
-        <item>less than a day</item>
-        <item>1 day</item>
-        <item>2 days</item>
-        <item>3\-4 days</item>
-        <item>5\-7 days</item>
-        <item>1\-2 weeks</item>
-        <item>2\-4 weeks</item>
-        <item>1 month</item>
-        <item>2 months</item>
-        <item>3 months</item>
-        <item>4\-6 months</item>
-        <item>7\-12 months</item>
-        <item>1 year</item>
-        <item>2 years</item>
-        <item>3\-5 years</item>
-        <item>more than 5 years</item>
+        <item>एक दिन से भी कम</item>
+        <item>1 दिन</item>
+        <item>2 दिन</item>
+        <item>3\-4 दिन</item>
+        <item>5\-7 दिन</item>
+        <item>1\-2 सप्ताह</item>
+        <item>2\-4 सप्ताह</item>
+        <item>1 महीना</item>
+        <item>2 महीना</item>
+        <item>3 महीना</item>
+        <item>4\-6 महीना</item>
+        <item>7\-12 महीना</item>
+        <item>1 साल</item>
+        <item>2 साल</item>
+        <item>3\-5 साल</item>
+        <item>5 साल से अधिक</item>
     </string-array>
 
-    <string name="headache_question_2">Where exactly do you feel the pain?</string>
+    <string name="headache_question_2">आपको दर्द कहाँ महसूस हो रहा है?</string>
     <string-array name="headache_point_array">
         <item></item>
-        <item>Behind the eyes</item>
-        <item>On the top of the head</item>
-        <item>On the backside of the head</item>
-        <item>Forehead</item>
+        <item>आंखों के पीछे</item>
+        <item>सिर के शीर्ष पर</item>
+        <item>सिर के पीछे</item>
+        <item>माथे पर</item>
         <item>Temples</item>
     </string-array>
 
-    <string name="headache_question_3">What kind of pain are you experiencing?</string>
+    <string name="headache_question_3">आप किस तरह का दर्द अनुभव कर रहे हैं?</string>
     <string-array name="headache_pain_type_array">
         <item></item>
-        <item>Stabbing pain</item>
-        <item>Burning pain</item>
-        <item>Throbbing</item>
+        <item>भयानक दर्द</item>
+        <item>जलन</item>
+        <item>धड़कते</item>
     </string-array>
 
     <string name="exit_message">कृपया डॉक्टर के पास जाएै</string>

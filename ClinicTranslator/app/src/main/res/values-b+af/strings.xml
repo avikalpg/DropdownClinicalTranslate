@@ -6,10 +6,10 @@
     <string name="doc_language_label">Doctor\'s Language</string>
     <string name="patient_language_label">Patient\'s Language</string>
     <string-array name="languages_array">
-        <item>English</item>
+        <item>Engels</item>
         <item>Hindi</item>
         <item>Afrikaans</item>
-        <item>Portuguese</item>
+        <item>Portugees</item>
     </string-array>
     <string name="submitLanguage">Go!</string>
     <string name="resetButton">Reset</string>
@@ -18,7 +18,7 @@
     <string name="salutation_text">How are you feeling today?</string>
     <string-array name="primary_ailment_array">
         <item></item>
-        <item>Headache</item>
+        <item>hoofpyn</item>
         <item>Stomachache</item>
         <item>Injury</item>
         <item>Cold</item>
