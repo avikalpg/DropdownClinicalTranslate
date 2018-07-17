@@ -143,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
             activityState = Boolean.FALSE;
         }
         else {
+            setLocale(language_codes_map.get(PatientLanguage));
+            while (!getResources().getConfiguration().locale.getLanguage().equals(language_codes_map.get(PatientLanguage))) {
+                try {
+                    Thread.sleep(1000);
+                    //                wait(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             Button button = findViewById(R.id.goButton);
             button.setText(getString(R.string.resetButton));
 
@@ -167,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 conversation.addView(reply);
             } else {
                 conversation = findViewById(R.id.conversationLayout);
+                Log.d("LinearLayout", "chat: Length of new:" + conversation.getChildCount());
                 TextView reply = new TextView(this);
                 reply.setTextSize(18);
                 reply.setPadding(0, 16, 16, 8);
@@ -210,12 +220,13 @@ public class MainActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
-        Intent refresh = new Intent(this, MainActivity.class);
-        startActivity(refresh);
-        finish();
+//        Intent refresh = new Intent(this, MainActivity.class);
+//        startActivity(refresh);
+//        finish();
     }
 
     public void translate(View v) {
+        Log.d("LinearLayout", "translate: Length of conversation:" + conversation.getChildCount());
         setLocale(language_codes_map.get(DoctorLanguage));
     }
 }
