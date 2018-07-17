@@ -15,17 +15,6 @@
     <string name="resetButton">Reset</string>
     <string name="translateButton">Translate</string>
     
-    <string name="salutation_text">How are you feeling today?</string>
-    <string-array name="primary_ailment_array">
-        <item></item>
-        <item>Headache</item>
-        <item>Stomachache</item>
-        <item>Injury</item>
-        <item>Cold</item>
-        <item>Fever</item>
-    </string-array>
-
-    <string name="headache_question_1">Since when have you been experiencing headache?</string>
     <string-array name="durations_array">
         <item></item>
         <item>less than a day</item>
@@ -46,23 +35,38 @@
         <item>more than 5 years</item>
     </string-array>
 
-    <string name="headache_question_2">Where exactly do you feel the pain?</string>
-    <string-array name="headache_point_array">
+    <string-array name="doctor_responses">
         <item></item>
+        <item>How are you feeling today?</item>
+        <item>How old are you?</item>
+        <item>Since when do you have this problem?</item>
+        <item>Please gesture towards the point where you feel the pain.</item>
+        <item>What kind of pain are you experiencing?</item>
+        <item>Do you have any allergies?</item>
+        <item>Open your mouth.</item>
+        <item>Stick your tongue out.</item>
+        <item>I am prescribing some medicines.</item>
+        <item>Take this pill with water after eating.</item>
+        <item>Drink more water</item>
+        <item>Come back again next week for a follow-up.</item>
+        <item>Don't worry, you will get well very soon.</item>
+    </string-array>
+
+    <string-array name="patient_responses">
+        <item></item>
+        <item>Headache</item>
+        <item>Stomachache</item>
+        <item>Injury</item>
+        <item>Cold</item>
+        <item>Fever</item>
         <item>Behind the eyes</item>
         <item>On the top of the head</item>
         <item>On the backside of the head</item>
         <item>Forehead</item>
         <item>Temples</item>
-    </string-array>
-
-    <string name="headache_question_3">What kind of pain are you experiencing?</string>
-    <string-array name="headache_pain_type_array">
-        <item></item>
         <item>Stabbing pain</item>
         <item>Burning pain</item>
         <item>Throbbing</item>
     </string-array>
 
-    <string name="exit_message">Please proceed to the doctor\'s desk now.</string>
 </resources>

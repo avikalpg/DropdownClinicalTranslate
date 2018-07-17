@@ -64,5 +64,40 @@
         <item>धड़कते</item>
     </string-array>
 
+    <string-array name="doctor_responses">
+        <item></item>
+        <item>आपका स्वास्थ्य कैसा है?</item>
+        <item>आप कितने साल के हैं?</item>
+        <item>आपको कब से ये दिक्कत हैं?</item>
+        <item>जहां आपको दर्द महसूस होता है वहां इशारा करें।</item>
+        <item>आप किस तरह का दर्द अनुभव कर रहे हैं?</item>
+        <item>क्या आपको कोई एलर्जी है?</item>
+        <item>अपना मुहँ खोलो।</item>
+        <item>अपनी जीभ बाहर निकालो।</item>
+        <item>मैं कुछ दवाएं लिख रहा हूं।</item>
+        <item>खाने के बाद पानी के साथ इस गोली को लेना</item>
+        <item>ज्यादा पानी पियो</item>
+        <item>अगले हफ्ते फिर से आओ</item>
+        <item>चिंता मत करो, आप बहुत जल्द ठीक हो जाएंगे।</item>
+    </string-array>
+
+    <string-array name="patient_responses">
+        <item></item>
+        <item>सरदर्द</item>
+        <item>पेट दर्द</item>
+        <item>चोट</item>
+        <item>सर्दी</item>
+        <item>बुखार</item>
+        <item>आंखों के पीछे</item>
+        <item>सिर के शीर्ष पर</item>
+        <item>सिर के पीछे</item>
+        <item>माथे पर</item>
+        <item>Temples</item>
+        <item>भयानक दर्द</item>
+        <item>जलन</item>
+        <item>धड़कता दर्द</item>
+    </string-array>
+
+
     <string name="exit_message">कृपया डॉक्टर के पास जाएै</string>
 </resources>
