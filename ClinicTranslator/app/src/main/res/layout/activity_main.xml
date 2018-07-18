@@ -26,7 +26,7 @@
 
     <Spinner
         android:id="@+id/spinnerDoctorLanguage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -40,11 +40,11 @@
         app:layout_constraintEnd_toStartOf="@+id/spinnerPatientLanguage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.110000014" />
+        app:layout_constraintVertical_bias="0.058" />
 
     <Spinner
         android:id="@+id/spinnerPatientLanguage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -53,7 +53,7 @@
         android:entries="@array/languages_array"
         android:prompt="@string/patient_language_prompt"
         app:layout_constraintBottom_toBottomOf="@+id/spinnerDoctorLanguage"
-        app:layout_constraintEnd_toStartOf="@+id/goButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinnerDoctorLanguage"
         app:layout_constraintTop_toTopOf="@+id/spinnerDoctorLanguage" />
 
@@ -65,19 +65,22 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:onClick="selectLanguage"
         android:text="@string/submitLanguage"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerPatientLanguage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerPatientLanguage"
-        app:layout_constraintTop_toTopOf="@+id/textView_patientLanguage"
-        android:onClick="selectLanguage"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDoctorLanguage" />
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/translateButton"
         app:layout_constraintEnd_toEndOf="parent"
