@@ -38,7 +38,7 @@
     <string-array name="doctor_responses">
         <item></item>
         <item>How are you feeling today?</item>
-        <item>How old are you?</item>
+        <item class='numeric'>How old are you?</item>
         <item>Since when do you have this problem?</item>
         <item>Please gesture towards the point where you feel the pain.</item>
         <item>What kind of pain are you experiencing?</item>

@@ -11,37 +11,37 @@
         <item>Afrikaans</item>
         <item>Portugees</item>
     </string-array>
-    <string name="submitLanguage">Go!</string>
-    <string name="resetButton">Reset</string>
-    <string name="translateButton">Translate</string>
+    <string name="submitLanguage">Begin</string>
+    <string name="resetButton">herstel</string>
+    <string name="translateButton">Vertaal</string>
     
     <string-array name="durations_array">
         <item></item>
-        <item>less than a day</item>
-        <item>1 day</item>
-        <item>2 days</item>
-        <item>3\-4 days</item>
-        <item>5\-7 days</item>
-        <item>1\-2 weeks</item>
-        <item>2\-4 weeks</item>
-        <item>1 month</item>
-        <item>2 months</item>
-        <item>3 months</item>
-        <item>4\-6 months</item>
-        <item>7\-12 months</item>
-        <item>1 year</item>
-        <item>2 years</item>
-        <item>3\-5 years</item>
-        <item>more than 5 years</item>
+        <item>minder as 'n dag</item>
+        <item>1 dag</item>
+        <item>2 dae</item>
+        <item>3\-4 dae</item>
+        <item>5\-7 dae</item>
+        <item>1\-2 weke</item>
+        <item>2\-4 weke</item>
+        <item>1 maand</item>
+        <item>2 maande</item>
+        <item>3 maande</item>
+        <item>4\-6 maande</item>
+        <item>7\-12 maande</item>
+        <item>1 jaar</item>
+        <item>2 jaar</item>
+        <item>3\-5 jaar</item>
+        <item>meer as 5 jaar</item>
     </string-array>
 
     <string-array name="doctor_responses">
         <item></item>
-        <item>How are you feeling today?</item>
+        <item>Hoe voel Mnr/Mev vandag?</item>
         <item>How old are you?</item>
         <item>Since when do you have this problem?</item>
-        <item>Please gesture towards the point where you feel the pain.</item>
-        <item>What kind of pain are you experiencing?</item>
+        <item>Kan Mnr/Mev vir my asseblief wys waar die pyn is.</item>
+        <item>Watter tiepe pyn ervaar Mnr/Mev?</item>
         <item>Do you have any allergies?</item>
         <item>Open your mouth.</item>
         <item>Stick your tongue out.</item>
@@ -54,17 +54,17 @@
 
     <string-array name="patient_responses">
         <item></item>
-        <item>Headache</item>
+        <item>Kopseer</item>
         <item>Stomachache</item>
         <item>Injury</item>
         <item>Cold</item>
         <item>Fever</item>
-        <item>Behind the eyes</item>
+        <item>Agter die oë</item>
         <item>On the top of the head</item>
         <item>On the backside of the head</item>
         <item>Forehead</item>
         <item>Temples</item>
-        <item>Stabbing pain</item>
+        <item>Steek pyn</item>
         <item>Burning pain</item>
         <item>Throbbing</item>
     </string-array>
