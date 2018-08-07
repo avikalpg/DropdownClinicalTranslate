@@ -8,9 +8,9 @@
 
   <ion-navbar>
   	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Auto-Translator</ion-title>
+	  <ion-icon name="menu"></ion-icon>
+	</button>
+	<ion-title>Auto-Translator</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -45,19 +45,23 @@
 				<input type="text" name="doctor_language" placeholder="Doctor's Language" [(ngModel)]="doctorLanguage">
 				<input type="text" name="patient_language" placeholder="Patient's Language" [(ngModel)]="patientLanguage"><br>
 			</ion-row> -->
-			<button ion-row ion-button>Start</button>
+			<button ion-row ion-button (click)="selectLanguage()">Start</button>
 		</ion-grid>
 		
 		<ion-scroll scrollY=true style="flex: 1 0 0;" >
-           <ion-list >
-             ... Dynamic top content goes here ...
-           </ion-list>
-        </ion-scroll>
+		   <ion-list >
+		   		<ion-auto-complete [dataProvider]="getResponses"></ion-auto-complete>
+			 	<ion-item>This is one item</ion-item>
+			 	<ion-item>
+			 		
+			 	</ion-item>
+		   </ion-list>
+		</ion-scroll>
 
-        <ion-grid>
-            <button ion-button ion-row>Translate</button>
-        </ion-grid>
-    </div>
+		<ion-grid>
+			<button ion-button ion-row (click)="translate()">Translate</button>
+		</ion-grid>
+	</div>
 		<!-- <button ion-row ion-button style="position:fixed; bottom:30px;">Translate</button> -->
 
 </ion-content>
