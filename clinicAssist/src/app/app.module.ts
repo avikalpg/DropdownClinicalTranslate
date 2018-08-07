@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { AutoCompleteModule } from 'ionic2-auto-complete';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    AutoCompleteModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

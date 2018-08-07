@@ -16,9 +16,11 @@
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
 
-  <input type="text" name="test_text_field" [(ngModel)]="textField"/>
+  <input type="text" name="test_text_field" [(ngModel)]="textField" (focus)="stringChange()"/>
   {{textField}} <br>
   {{x}}
   {{x-y+z}}
-  <input placeholder="{{textField}}" />
+  <input placeholder="{{textField}}" (ng-change)="stringChange()" (focus)="stringChange()" />
+
+  <ion-auto-complete [dataProvider]="getResults"></ion-auto-complete>
 </ion-content>
