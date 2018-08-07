@@ -17,54 +17,47 @@
 
 
 <ion-content padding>
-	<ion-grid>
-		<!-- <ion-row>
-			<div ion-col col-6>
-				{{textView_doctorLanguage}}
-				<ion-select [(ngModel)]="doctorLanguage">
+	<div style="display:flex; height: 100%; flex-direction: column;" >
+		<ion-grid>
+			<ion-row>
+				<div ion-col col-6>
+					{{textView_doctorLanguage}}
+				</div>
+				<div ion-col col-6>
+					{{textView_patientLanguage}}
+				</div>
+			</ion-row>
+			<ion-row>
+				<ion-select ion-col col-6 [(ngModel)]="doctorLanguage">
 					<ion-option value="en">English</ion-option>
 					<ion-option value="af">Afrikaans</ion-option>
 					<ion-option value="hi">Hindi</ion-option>
 					<ion-option value="pt">Portugese</ion-option>
 				</ion-select>
-			</div>
-			<div ion-col col-6>
-				{{textView_patientLanguage}}
-				<ion-select [(ngModel)]="patientLanguage">
+				<ion-select ion-col col-6 [(ngModel)]="patientLanguage" [selectOptions]="selectOptions">
 					<ion-option value="en">English</ion-option>
 					<ion-option value="af">Afrikaans</ion-option>
 					<ion-option value="hi">Hindi</ion-option>
 					<ion-option value="pt">Portugese</ion-option>
 				</ion-select>
-			</div>
-		</ion-row> -->
-		<ion-row>
-			<div ion-col col-6>
-				{{textView_doctorLanguage}}
-			</div>
-			<div ion-col col-6>
-				{{textView_patientLanguage}}
-			</div>
-		</ion-row>
-		<ion-row>
-			<ion-select ion-col col-6 [(ngModel)]="doctorLanguage">
-				<ion-option value="en">English</ion-option>
-				<ion-option value="af">Afrikaans</ion-option>
-				<ion-option value="hi">Hindi</ion-option>
-				<ion-option value="pt">Portugese</ion-option>
-			</ion-select>
-			<ion-select ion-col col-6 [(ngModel)]="patientLanguage">
-				<ion-option value="en">English</ion-option>
-				<ion-option value="af">Afrikaans</ion-option>
-				<ion-option value="hi">Hindi</ion-option>
-				<ion-option value="pt">Portugese</ion-option>
-			</ion-select>
-		</ion-row>
-		<ion-row>
-			<input type="text" name="doctor_language" placeholder="Doctor's Language" [(ngModel)]="doctorLanguage">
-			<input type="text" name="patient_language" placeholder="Patient's Language" [(ngModel)]="patientLanguage"><br>
-		</ion-row>
-		<button ion-row ion-button>Start</button>
-	</ion-grid>
+			</ion-row>
+			<!-- <ion-row>
+				<input type="text" name="doctor_language" placeholder="Doctor's Language" [(ngModel)]="doctorLanguage">
+				<input type="text" name="patient_language" placeholder="Patient's Language" [(ngModel)]="patientLanguage"><br>
+			</ion-row> -->
+			<button ion-row ion-button>Start</button>
+		</ion-grid>
+		
+		<ion-scroll scrollY=true style="flex: 1 0 0;" >
+           <ion-list >
+             ... Dynamic top content goes here ...
+           </ion-list>
+        </ion-scroll>
+
+        <ion-grid>
+            <button ion-button ion-row>Translate</button>
+        </ion-grid>
+    </div>
+		<!-- <button ion-row ion-button style="position:fixed; bottom:30px;">Translate</button> -->
 
 </ion-content>
