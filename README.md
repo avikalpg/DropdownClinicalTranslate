@@ -33,14 +33,14 @@ If you are operating on Ubuntu (or any Linux distribution - including the one on
 
 2. After that, you can use the NPM installer to install Cordova and Ionic
 
-	sudo npm install -g cordova
-	sudo npm install -g ionic
-	sudo npm install -g n
+    sudo npm install -g cordova
+    sudo npm install -g ionic
+    sudo npm install -g n
 
 3. This much is enough for the development and testing purposes. It might beneficial to run the following commands, which might enable you to create the release builds for android and ios
 
-	ionic cordova platform add ios
-	ionic cordova plotform add android
+    ionic cordova platform add ios
+    ionic cordova plotform add android
 
 
 #### Development environment
@@ -49,8 +49,8 @@ To be able to serve the application completely, you will also have to install ce
 
 * Auto-complete
 
-	npm audit fix
-	sudo npm install ionic2-auto-complete --save
+    npm audit fix
+    sudo npm install ionic2-auto-complete --save
 
 
 #### Testing setup
