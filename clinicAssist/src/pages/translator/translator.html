@@ -33,20 +33,24 @@
 					<ion-option value="en">English</ion-option>
 					<ion-option value="af">Afrikaans</ion-option>
 					<ion-option value="hi">Hindi</ion-option>
-					<ion-option value="pt">Portugese</ion-option>
+					<ion-option value="pt">Portuguese</ion-option>
 				</ion-select>
 				<ion-select ion-col col-6 [(ngModel)]="patientLanguage" interface='popover'>
 					<ion-option value="en">English</ion-option>
 					<ion-option value="af">Afrikaans</ion-option>
 					<ion-option value="hi">Hindi</ion-option>
-					<ion-option value="pt">Portugese</ion-option>
+					<ion-option value="pt">Portuguese</ion-option>
 				</ion-select>
 			</ion-row>
 			<!-- <ion-row>
 				<input type="text" name="doctor_language" placeholder="Doctor's Language" [(ngModel)]="doctorLanguage">
 				<input type="text" name="patient_language" placeholder="Patient's Language" [(ngModel)]="patientLanguage"><br>
 			</ion-row> -->
-			<button ion-row ion-button (click)="selectLanguage()">Start</button>
+			<ng-template #start_text>Start</ng-template>
+			<ng-template #reset_text>Reset</ng-template>
+			<button ion-row ion-button (click)="selectLanguage()">
+				<div *ngIf="!activity_state; then start_text else reset_text"></div>
+			</button>
 		</ion-grid>
 		
 		<ion-scroll scrollY=true style="flex: 1 0 0;" >
