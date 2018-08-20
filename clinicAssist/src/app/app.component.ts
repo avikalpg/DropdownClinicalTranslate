@@ -13,7 +13,8 @@ import { TranslatorPage } from '../pages/translator/translator';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  // rootPage: any = HomePage;
+  rootPage: any = TranslatorPage;
 
   pages: Array<{title: string, component: any}>;
 

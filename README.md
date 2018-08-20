@@ -13,6 +13,8 @@ The development of the Android Studio app has been halted on 25th July, 2018. Yo
 
 For testing, you can either use an Android Emulator or you can connect your own device. Alternatively, you can build-project and create a .apk file which can installed in any Android mobile phone.
 
+Note: You will need JAVA installed in your machine
+
 ----
 ## clinicAssist: Ionic Application
 
