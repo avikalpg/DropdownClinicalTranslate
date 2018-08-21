@@ -54,16 +54,17 @@
 		</ion-grid>
 		
 		<ion-scroll scrollY=true style="flex: 1 0 0;" >
-		   <ion-list >
-			 	<ion-item><small>The conversation begins here.</small></ion-item>
+		   <ion-list>
+			 	<ion-item *ngIf="conversation.length == 0"><small>The conversation begins here.</small></ion-item>
+			 	<ion-item *ngFor="let message of conversation"><small>{{message}}</small></ion-item>
 		   </ion-list>
 		</ion-scroll>
 
 		<ion-grid>
 			<!-- <ion-auto-complete [dataProvider]="getResponses" ion-col col-10>Type</ion-auto-complete> -->
 			<ion-row>
-				<ion-auto-complete [dataProvider]="getResponses" placeholder="Type here..." ion-col col-10></ion-auto-complete>
-				<button ion-button ion-col col-2 class="send-icon-button" (click)="translate()" round icon-only>
+				<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="text_field_content" placeholder="Type here..." ion-col col-10></ion-auto-complete>
+				<button ion-button ion-col col-2 class="send-icon-button" (click)="sendMessage()" round icon-only>
 					<ion-icon name="send"></ion-icon>
 				</button>
 			</ion-row>
