@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CompleteTestServiceProvider } from "../../providers/complete-test-service/complete-test-service";
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite'
 
 /**
  * Generated class for the TranslatorPage page.

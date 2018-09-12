@@ -107,9 +107,11 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 
 	getResults(keyword:string) {
 		if (this.current_language == this.doctor_language) {
+			console.log(">1> Current Language:" + this.current_language )
 			return this.doctor_response_list[this.current_language].filter(item => this.stringMatchLogic(keyword, item));
 		}
 		else if (this.current_language == this.patient_language) {
+			console.log(">2> Current Language:" + this.current_language )
 			return this.patient_response_list[this.current_language].filter(item => this.stringMatchLogic(keyword, item));
 		}
 		else {
