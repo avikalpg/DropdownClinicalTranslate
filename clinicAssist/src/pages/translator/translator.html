@@ -51,6 +51,7 @@
 			<button ion-row ion-button (click)="selectLanguage()">
 				<div *ngIf="!activity_state; then start_text else reset_text"></div>
 			</button>
+
 		</ion-grid>
 		
 		<ion-scroll scrollY=true style="flex: 1 0 0;" >
@@ -61,9 +62,9 @@
 		</ion-scroll>
 
 		<ion-grid>
-			<!-- <ion-auto-complete [dataProvider]="getResponses" ion-col col-10>Type</ion-auto-complete> -->
+			<!-- <ion-auto-complete [dataProvider]="completeTestService" >Type</ion-auto-complete> -->
 			<ion-row>
-				<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="text_field_content" placeholder="Type here..." ion-col col-10></ion-auto-complete>
+				<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="text_field_content" placeholder="Type here..." style="width: 75%"></ion-auto-complete>
 				<button ion-button ion-col col-2 class="send-icon-button" (click)="sendMessage()" round icon-only>
 					<ion-icon name="send"></ion-icon>
 				</button>
