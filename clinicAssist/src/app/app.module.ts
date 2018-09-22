@@ -10,6 +10,8 @@ import { TranslatorPage } from '../pages/translator/translator';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CompleteTestServiceProvider } from '../providers/complete-test-service/complete-test-service';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CompleteTestServiceProvider,
+    SQLite
   ]
 })
 export class AppModule {}
