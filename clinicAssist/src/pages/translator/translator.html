@@ -64,7 +64,7 @@
 		<ion-grid>
 			<!-- <ion-auto-complete [dataProvider]="completeTestService" >Type</ion-auto-complete> -->
 			<ion-row>
-				<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="text_field_content" placeholder="Type here..." style="width: 75%"></ion-auto-complete>
+				<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="text_field_content" [options]="{ placeholder : 'Type here...' }" [showResultsFirst]="true" style="width: 75%"></ion-auto-complete>
 				<button ion-button ion-col col-2 class="send-icon-button" (click)="sendMessage()" round icon-only>
 					<ion-icon name="send"></ion-icon>
 				</button>
