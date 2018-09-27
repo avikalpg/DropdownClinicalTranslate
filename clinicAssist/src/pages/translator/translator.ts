@@ -25,8 +25,7 @@ export class TranslatorPage {
 	private activity_state:Boolean;
 	private text_field_content:String;
 
-	private conversation:String[] = [
-	];
+	private conversation:String[] = [];
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public completeTestService: CompleteTestServiceProvider) {
 		this.activity_state = false;
@@ -45,6 +44,16 @@ export class TranslatorPage {
 	selectLanguage() {
 		if (this.activity_state) {
 			// reset activities
+
+			// save the current conversation in the database
+			/*
+			*
+			* code here for saving the conversation in the database
+			*
+			*/
+
+			// clear the conversation list
+			this.conversation = [];
 
 			this.activity_state = false;
 		}
