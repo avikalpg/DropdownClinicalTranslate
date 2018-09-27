@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController, ToastOptions } from 'ionic-angular';
 import { CompleteTestServiceProvider } from "../../providers/complete-test-service/complete-test-service";
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite'
 
@@ -24,10 +24,13 @@ export class TranslatorPage {
 	private current_language:string;
 	private activity_state:Boolean;
 	private text_field_content:String;
+	@ViewChild('myTextBox') searchbar: any;
+	private toastOptions:ToastOptions;
 
 	private conversation:String[] = [];
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public completeTestService: CompleteTestServiceProvider) {
+	constructor(public navCtrl: NavController, public navParams: NavParams,
+	public completeTestService: CompleteTestServiceProvider, private toast:ToastController) {
 		this.activity_state = false;
 	}
 
@@ -82,7 +85,18 @@ export class TranslatorPage {
 	}
 
 	sendMessage() {
-		this.conversation.push(this.text_field_content);
+		if (this.searchbar.keyword === this.text_field_content) {
+			this.conversation.push(this.text_field_content);
+		}
+		else {
+			console.log("[WARNING] The text in the box does not have predefined translations");
+			this.toastOptions = {
+				message: "Translations not available for this sentence",
+				duration: 2000,
+				showCloseButton: false
+			};
+			this.toast.create(this.toastOptions).present();
+		}
 	}
 
 }
