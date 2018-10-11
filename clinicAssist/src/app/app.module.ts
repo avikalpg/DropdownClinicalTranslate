@@ -19,7 +19,16 @@ class SQLiteMock {
   public create(config: SQLiteDatabaseConfig): Promise<SQLiteObject> {
     //since this is an in memory database we can ignore the config parameters 
 
-    var db = new SQL.Database();
+    var db;
+    var storeddb = localStorage.getItem("database");
+
+    if (storeddb) {
+      var arr = storeddb.split(',');
+      db = new SQL.Database(arr);
+    }
+    else {
+      db = new SQL.Database();
+    }
 
     return new Promise((resolve,reject) => {
         resolve(new SQLiteObject(db));
@@ -38,7 +47,7 @@ class SQLiteObject{
     return new Promise((resolve,reject)=>{
       try {
         var st = this._objectInstance.prepare(statement,params);
-        var rows :Array<any> = [] ;
+        var rows: Array<any> = [];
         while(st.step()) { 
           var row = st.getAsObject();
           rows.push(row)
@@ -52,7 +61,12 @@ class SQLiteObject{
           },
           rowsAffected: this._objectInstance.getRowsModified() || 0,
           insertId: this._objectInstance.insertId || void 0
-        };  
+        };
+
+        // save database after each SQL query
+        var arr : ArrayBuffer = this._objectInstance.export();
+        localStorage.setItem("database",String(arr));
+
         resolve(payload);
       } catch(e){
         reject(e);
