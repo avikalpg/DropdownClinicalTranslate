@@ -7,11 +7,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TranslatorPage } from '../pages/translator/translator';
+import { ContributePage } from '../pages/contribute/contribute';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CompleteTestServiceProvider } from '../providers/complete-test-service/complete-test-service';
 import { SQLite, SQLiteDatabaseConfig } from '@ionic-native/sqlite'
+import { DatabaseProvider } from '../providers/database/database';
 
 declare var SQL;
 
@@ -52,6 +55,7 @@ class SQLiteObject{
           var row = st.getAsObject();
           rows.push(row)
         }
+
         var payload = {
           rows: {
             item: function(i) {
@@ -80,7 +84,8 @@ class SQLiteObject{
     MyApp,
     HomePage,
     ListPage,
-    TranslatorPage
+    TranslatorPage,
+    ContributePage
   ],
   imports: [
     BrowserModule,
@@ -92,14 +97,16 @@ class SQLiteObject{
     MyApp,
     HomePage,
     ListPage,
-    TranslatorPage
+    TranslatorPage,
+    ContributePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CompleteTestServiceProvider,
-    {provide: SQLite, useClass: SQLiteMock}
+    {provide: SQLite, useClass: SQLiteMock},
+    DatabaseProvider
   ]
 })
 export class AppModule {}

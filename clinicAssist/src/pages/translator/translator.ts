@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, ToastOptions } from 'ionic-angular';
 import { CompleteTestServiceProvider } from "../../providers/complete-test-service/complete-test-service";
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../../providers/database/database';
+
 
 /**
  * Generated class for the TranslatorPage page.
@@ -30,7 +31,7 @@ export class TranslatorPage {
 	private conversation:String[] = [];
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
-	public completeTestService: CompleteTestServiceProvider, private toast:ToastController) {
+	public completeTestService: CompleteTestServiceProvider, private toast:ToastController, public dbms: DatabaseProvider) {
 		this.activity_state = false;
 	}
 
