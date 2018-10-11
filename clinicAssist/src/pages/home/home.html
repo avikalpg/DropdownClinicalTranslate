@@ -14,13 +14,33 @@
     Avikalp, If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <button ion-button secondary menuToggle>Toggle Menu</button><br>
+
+  <hr>
 
   <input type="text" name="test_text_field" [(ngModel)]="textField" (focus)="stringChange()"/>
   {{textField}} <br>
-  {{x}}
-  {{x-y+z}}
-  <input placeholder="{{textField}}" (ng-change)="stringChange()" (focus)="stringChange()" />
+  <p>Testing value extraction: {{x}}</p>
+  <p>Testing on page mathematical calculations: {{x-y+z}}</p>
+  <input placeholder="{{textField}}" (ng-change)="stringChange()" (focus)="stringChange()" /><br>
+
+  <hr>
+
+  Testing the auto-complete search module
 
   <ion-auto-complete [dataProvider]="getResults"></ion-auto-complete>
+
+  <hr>
+
+  <p>Testing SQLite mock Database</p>
+  <ion-content padding>
+      <button ion-button (click)="insertInvoice()">Insert Invoice</button>
+      <ion-list>
+      <ion-item *ngFor="let invoice of invoices">
+        {{ invoice["name"] }}
+      </ion-item>
+  </ion-list>
+  </ion-content>
+
+  <hr>
 </ion-content>

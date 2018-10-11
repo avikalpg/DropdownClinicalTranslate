@@ -73,3 +73,11 @@ This will start the service and display the IP address and the port on which you
 
 On an android device, you can use the [Ionic DevApp](https://play.google.com/store/apps/details?id=io.ionic.devapp&hl=en_IN) for testing the app. After you have installed the application on your android device, you only have to connect the device to the same network and you will be able to see the Ionic service (which has to be started in the manner explained above).
 
+#### Additional tips on testing
+When deploying the app to create the native deployment of the program (i.e. a .apk file in case of Android), change the following lines in `app.module.ts`:
+
+    {provide: SQLite, useClass: SQLiteMock}
+ Replace the above line with the following line:
+    SQLite
+
+This is to be able to use the actual Native SQLite database in a device instead of an in memory database
