@@ -14,9 +14,9 @@ import { ContributePage } from '../pages/contribute/contribute';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  // rootPage: any = HomePage;
   // rootPage: any = TranslatorPage;
-  // rootPage: any = ContributePage;
+  rootPage: any = ContributePage;
 
   pages: Array<{title: string, component: any}>;
 

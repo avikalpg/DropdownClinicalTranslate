@@ -48,4 +48,8 @@ export class ContributePage {
   	this.dbms.showSentenceMeaning();
   }
 
+  refreshTables() {
+  	this.dbms.refreshTables();
+  }
+
 }
