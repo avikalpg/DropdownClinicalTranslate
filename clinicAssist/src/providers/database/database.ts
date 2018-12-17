@@ -114,7 +114,7 @@ export class DatabaseProvider {
 				this.sentences = [];
 				if(data.rows.length > 0) {
 					for(var i = 0 ; i < data.rows.length ; i++) {
-						this.sentences.push({ name: data.rows.item(i) });
+						this.sentences.push( data.rows.item(i) );
 					}
 				}
 				console.log(this.sentences);
@@ -142,7 +142,7 @@ export class DatabaseProvider {
 				this.meanings = [];
 				if(data.rows.length > 0) {
 					for(var i = 0 ; i < data.rows.length ; i++) {
-						this.meanings.push({ name: data.rows.item(i) });
+						this.meanings.push(data.rows.item(i));
 					}
 				}
 				console.log(this.meanings);
@@ -172,7 +172,7 @@ export class DatabaseProvider {
 		 	this.translations = [];
 				if(results.rows.length > 0) {
 					for(var i = 0 ; i < results.rows.length ; i++) {
-						this.translations.push({ name: results.rows.item(i) });
+						this.translations.push( results.rows.item(i) );
 					}
 				}
 				console.log(this.translations);

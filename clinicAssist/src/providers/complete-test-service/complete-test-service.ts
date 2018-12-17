@@ -132,7 +132,7 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 			this.db_response_list = [];
 			for (var i = 0; i < this.dbms.sentences_of_language.length; i++){
 				// console.log(this.dbms.sentences_of_language[i])
-				this.db_response_list.push(this.dbms.sentences_of_language[i]['sentence'])
+				this.db_response_list.push(this.dbms.sentences_of_language[i]['sentence'] + " [" + this.dbms.sentences_of_language[i]['meaning_id'] + "]")
 			}
 			// console.log(this.db_response_list)
 			return this.db_response_list.filter(item => this.stringMatchLogic(keyword, item));
