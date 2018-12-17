@@ -33,6 +33,15 @@
 			</ion-select>
 		</ion-item>
 		<ion-item>
+			<ion-label>Speaker</ion-label><br>
+			<ion-select [(ngModel)]="new_sentence.speaker" interface='popover' name="speaker">
+				<ion-option value="0">Doctor</ion-option>
+				<ion-option value="1">Nurse</ion-option>
+				<ion-option value="2">Patient</ion-option>
+				<ion-option value="3">Patient Representative</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
 			<ion-label>Country</ion-label><br>
 			<ion-select [(ngModel)]="new_sentence.country" interface='popover' name="country">
 				<ion-option value="IN">India</ion-option>
@@ -60,7 +69,24 @@
 	<hr>
 
 	Translation
+	<ion-list style="margin-bottom: 0px;">
+		<ion-item>
+			<ion-label>Source Language</ion-label>
+			<ion-select ion-col col-6 #sourceLanguage interface='popover' (ionChange)="changeSourceLanguage(sourceLanguage.value)">
+				<ion-option value="en">English</ion-option>
+				<ion-option value="af">Afrikaans</ion-option>
+				<ion-option value="hi">Hindi</ion-option>
+				<ion-option value="pt">Portuguese</ion-option>
+			</ion-select><br>
+		</ion-item>
+	
+
+	<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="translated_sentence" [options]="{ placeholder : 'Source sentence' }" [showResultsFirst]="true" #myTextBox></ion-auto-complete>
+	</ion-list>
 	<form (ngSubmit)="translateForm()">
+		<ion-item style="display: none;">
+			<ion-input [(ngModel)]="translated_sentence" name="translated_sentence"></ion-input>
+		</ion-item>
 		<ion-item>
 			<ion-label>Translation</ion-label>
 			<ion-input type="text" [(ngModel)]="translation.sentence" name="translation" ></ion-input>
@@ -97,6 +123,7 @@
 
 	<hr>
 
+	<button ion-button block (click)="showTables()">Show ALL tables</button>
 	<button ion-button block (click)="refreshTables()">Refresh ALL tables</button>
 
 

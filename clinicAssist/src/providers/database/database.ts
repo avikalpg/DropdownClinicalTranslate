@@ -13,8 +13,9 @@ export class DatabaseProvider {
 	// Database related objects
 	public database: SQLiteObject;
 	public sentences: Array<Object>;
+	public sentences_of_language: Array<Object>;
 	public meanings: Array<Object>;
-	public sentence_meaning: Array<Object>;
+	public translations: Array<Object>;
 
 	constructor(private sqlite: SQLite) {
 		console.log('Hello DatabaseProvider Provider');
@@ -29,6 +30,9 @@ export class DatabaseProvider {
 	public createTables(){
 		this.database.executeSql('create table if not exists meanings( \
 			id integer primary key autoincrement, \
+			type INTEGER, \
+			response_type INTEGER, \
+			speaker_type INTEGER, \
 			context VARCHAR(32) \
 			)', [])
 			.then(() => {
@@ -43,8 +47,6 @@ export class DatabaseProvider {
 			language VARCHAR(32), \
 			country VARCHAR(16), \
 			contributor INTEGER, \
-			type INTEGER, \
-			response_type INTEGER, \
 			is_original INTEGER, \
 			upload_status INTEGER, \
 			FOREIGN KEY(meaning_id) REFERENCES meanings(id) \
@@ -71,8 +73,8 @@ export class DatabaseProvider {
 		this.createTables();
 	}
 
-	public insertNewSentence(sentence_text: String, language: String, country: String, contributor: number, context: String){
-		this.database.executeSql("INSERT INTO meanings (context) VALUES (?)", [context]).then((data) => {
+	public insertNewSentence(sentence_text: String, language: String, country: String, contributor: number, context: String, speaker: number){
+		this.database.executeSql("INSERT INTO meanings (context, speaker_type) VALUES (?, ?)", [context, speaker]).then((data) => {
 				console.log("INSERTED MEANING: " + sentence_text);
 			}, (error) => {
 				console.log("ERROR: " + JSON.stringify(error.err));
@@ -95,26 +97,16 @@ export class DatabaseProvider {
 			}, (error) => {
 				console.log("ERROR: " + JSON.stringify(error.err));
 			})
-
-
 	}
 
 	public insertTranslation(sentence_text: String, language: String, country: String, contributor: number, meaning_id: number) {
-		var sentence_id: number;
-		var values = [sentence_text, language, country, contributor, 0, 0];
+		var values = [sentence_text, meaning_id, language, country, contributor, 0, 0];
 	
-		this.database.executeSql("INSERT INTO sentences (sentence, language, country, contributor, is_original, upload_status) VALUES (?, ?, ?, ?, ?, ?)", values).then((data) => {
-				console.log("INSERTED SENTENCE: " + sentence_text);
-				sentence_id = data.insertId;
+		this.database.executeSql("INSERT INTO sentences (sentence, meaning_id, language, country, contributor, is_original, upload_status) VALUES (?, ?, ?, ?, ?, ?, ?)", values).then((data) => {
+				console.log("INSERTED SENTENCE: " + sentence_text + " for meaning-id: " + meaning_id);
 			}, (error) => {
 				console.log("ERROR: " + JSON.stringify(error.err));
 			});	
-
-		this.database.executeSql("INSERT INTO sentence_meaning (sentence_id, meaning_id) VALUES (?,?)", [sentence_id, meaning_id]).then((data) => {
-				console.log("INSERTED Mapping: " + sentence_text);
-			}, (error) => {
-				console.log("ERROR: " + JSON.stringify(error.err));
-			});
 	}
 
 	public showSentences(){
@@ -126,6 +118,20 @@ export class DatabaseProvider {
 					}
 				}
 				console.log(this.sentences);
+			}, (error) => {
+				console.log("ERROR: " + JSON.stringify(error));
+			});
+	}
+
+	public showSentencesOfLanguage(language:String){
+		this.database.executeSql("SELECT * FROM sentences WHERE language = ?", [language]).then((data) => {
+				this.sentences_of_language = [];
+				if(data.rows.length > 0) {
+					for(var i = 0 ; i < data.rows.length ; i++) {
+						this.sentences_of_language.push(data.rows.item(i));
+					}
+				}
+				console.log(this.sentences_of_language);
 			}, (error) => {
 				console.log("ERROR: " + JSON.stringify(error));
 			});
@@ -145,26 +151,31 @@ export class DatabaseProvider {
 			});
 	}
 
-	public showSentenceMeaning(){
-		this.database.executeSql("SELECT * FROM sentence_meaning", []).then((data) => {
-				this.sentence_meaning = [];
-				if(data.rows.length > 0) {
-					for(var i = 0 ; i < data.rows.length ; i++) {
-						this.sentence_meaning.push({ name: data.rows.item(i) });
-					}
-				}
-				console.log(this.sentence_meaning);
-			}, (error) => {
-				console.log("ERROR: " + JSON.stringify(error));
-			});
+	public getTranslation(sentence_id: number, target_language: String){
+		if (this.sentences.length == 0) {
+			this.getTranslationFromDB(sentence_id, target_language);
+			// This will work only if Javascript returns a pointer to the variable
+			// NOTE: You will not be able to see the translations if you print translations
+			// at this point
+			return this.translations
+		}
+		else {
+			
+		}
 	}
 
-	public getTranslation(sentence_text:String, target_language: String) {
-		var meaning_id:number;
-		this.database.executeSql("SELECT sm.meaning_id FROM (SELECT id FROM sentences WHERE sentence == ?) AS s0 INNER JOIN sentence_meaning AS sm ON s0.id = sm.sentence_id)",
-		 [sentence_text]).then((results) => {
-		 	meaning_id = results.rows.item(0).meaning_id;
+	public getTranslationFromDB(sentence_id: number, target_language: String) {
+		this.database.executeSql("SELECT * FROM sentences WHERE meaning_id = (SELECT meaning_id FROM sentences WHERE id = ?)",
+		 [sentence_id]).then((results) => {
+		 	var meaning_id = results.rows.item(0).meaning_id;
 		 	console.log("meaning_id" + meaning_id);
+		 	this.translations = [];
+				if(results.rows.length > 0) {
+					for(var i = 0 ; i < results.rows.length ; i++) {
+						this.translations.push({ name: results.rows.item(i) });
+					}
+				}
+				console.log(this.translations);
 		 }, (error) => {
 		 	console.log("ERROR: " + JSON.stringify(error));
 		 });

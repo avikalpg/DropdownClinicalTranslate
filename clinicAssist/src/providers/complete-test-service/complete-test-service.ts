@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DatabaseProvider } from '../../providers/database/database';
 import { AutoCompleteService } from 'ionic2-auto-complete';
 
 /*
@@ -16,6 +17,19 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 	private current_language:string;
 	labelAttribute = "name";
 
+
+	/***************************************************************
+	* TODO: Remove the database_mode parameter from this function
+
+	database_mode parameter has been created only to ease the transition
+	from creating a completely static list of options to creating a list
+	of options created using the database of sentences.
+
+	values:
+		false: it uses the doctor_response_list and the patient_response_list
+		true: it extract sentences from the database
+	***************************************************************/
+	private database_mode:boolean = false;
 
 	private doctor_response_list: { [id:string] : String[] } = {
 		"en" : [
@@ -83,9 +97,9 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 	    ]
 	};
 
+	private db_response_list: String[];
 
-
-	constructor() {
+	constructor(public dbms: DatabaseProvider) {
 		console.log('Hello CompleteTestServiceProvider Provider');
 	}
 
@@ -101,21 +115,40 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 		this.current_language = language_code;
 	}
 
+	// TODO: Remove this function when you remove the database_mode variable
+	setDatabaseMode(db_mode:boolean) {
+		this.database_mode = db_mode;
+	}
+
 	private stringMatchLogic(keyword:String, option:String) {
 		return option.toLowerCase().includes(keyword.toLowerCase())
 	}
 
 	getResults(keyword:string) {
-		if (this.current_language == this.doctor_language) {
-			console.log(">1> Current Language:" + this.current_language )
-			return this.doctor_response_list[this.current_language].filter(item => this.stringMatchLogic(keyword, item));
-		}
-		else if (this.current_language == this.patient_language) {
-			console.log(">2> Current Language:" + this.current_language )
-			return this.patient_response_list[this.current_language].filter(item => this.stringMatchLogic(keyword, item));
+		if (this.database_mode) {
+			console.log(">db_mode> Current Language:" + this.current_language )
+
+			// use the database to extract sentences
+			this.db_response_list = [];
+			for (var i = 0; i < this.dbms.sentences_of_language.length; i++){
+				// console.log(this.dbms.sentences_of_language[i])
+				this.db_response_list.push(this.dbms.sentences_of_language[i]['sentence'])
+			}
+			// console.log(this.db_response_list)
+			return this.db_response_list.filter(item => this.stringMatchLogic(keyword, item));
 		}
 		else {
-			console.log("[getResponses] ERROR: The current language is neither doctor's language nor patient's language");
+			if (this.current_language == this.doctor_language) {
+				console.log(">1> Current Language:" + this.current_language )
+				return this.doctor_response_list[this.current_language].filter(item => this.stringMatchLogic(keyword, item));
+			}
+			else if (this.current_language == this.patient_language) {
+				console.log(">2> Current Language:" + this.current_language )
+				return this.patient_response_list[this.current_language].filter(item => this.stringMatchLogic(keyword, item));
+			}
+			else {
+				console.log("[getResponses] ERROR: The current language is neither doctor's language nor patient's language");
+			}
 		}
 	}
 
