@@ -15,8 +15,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // rootPage: any = HomePage;
-  // rootPage: any = TranslatorPage;
-  rootPage: any = ContributePage;
+  rootPage: any = TranslatorPage;
+  // rootPage: any = ContributePage;
 
   pages: Array<{title: string, component: any}>;
 

@@ -9,4 +9,32 @@ page-translator {
 	.send-icon-button {
 		margin-top: 10px;
 	}
+
+	.user_name {
+		color: #afafaf;
+	}
+	.message {
+		padding: 10px !important;
+		transition: all 250ms ease-in-out !important;
+		border-radius: 10px !important;
+		margin-bottom: 4px !important;
+	}
+	.mymessage {
+		background: color($colors, primary) !important;
+		color: #000 !important;
+		border-top-right-radius: 0px !important;
+	}
+	.othermessage {
+		background: #dcdcdc !important;
+		color: #000 !important;
+		border-top-left-radius: 0px !important;
+	}
+	.time {
+		color: #afafaf;
+		float: right;
+		font-size: small;
+	}
+	.message_row {
+		background-color: #fff;
+	}
 }

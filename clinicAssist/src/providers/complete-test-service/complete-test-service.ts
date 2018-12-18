@@ -31,6 +31,8 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 	***************************************************************/
 	private database_mode:boolean = false;
 
+	private show_meaning_id_in_results_flag: boolean = false;
+
 	private doctor_response_list: { [id:string] : String[] } = {
 		"en" : [
 			"How are you feeling today?",
@@ -120,6 +122,10 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 		this.database_mode = db_mode;
 	}
 
+	setShowMeaningIdInResults(mid_flag:boolean) {
+		this.show_meaning_id_in_results_flag = mid_flag;
+	}
+
 	private stringMatchLogic(keyword:String, option:String) {
 		return option.toLowerCase().includes(keyword.toLowerCase())
 	}
@@ -132,7 +138,12 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 			this.db_response_list = [];
 			for (var i = 0; i < this.dbms.sentences_of_language.length; i++){
 				// console.log(this.dbms.sentences_of_language[i])
-				this.db_response_list.push(this.dbms.sentences_of_language[i]['sentence'] + " [" + this.dbms.sentences_of_language[i]['meaning_id'] + "]")
+				if (this.show_meaning_id_in_results_flag) {
+					this.db_response_list.push(this.dbms.sentences_of_language[i]['sentence'] + " [" + this.dbms.sentences_of_language[i]['meaning_id'] + "]");
+				}
+				else {
+					this.db_response_list.push(this.dbms.sentences_of_language[i]['sentence']);
+				}
 			}
 			// console.log(this.db_response_list)
 			return this.db_response_list.filter(item => this.stringMatchLogic(keyword, item));

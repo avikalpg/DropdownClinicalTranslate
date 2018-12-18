@@ -164,20 +164,51 @@ export class DatabaseProvider {
 		}
 	}
 
+	// TODO: This function is not used anywhere (check again)
 	public getTranslationFromDB(sentence_id: number, target_language: String) {
 		this.database.executeSql("SELECT * FROM sentences WHERE meaning_id = (SELECT meaning_id FROM sentences WHERE id = ?)",
 		 [sentence_id]).then((results) => {
 		 	var meaning_id = results.rows.item(0).meaning_id;
-		 	console.log("meaning_id" + meaning_id);
+		 	// console.log("meaning_id" + meaning_id);
 		 	this.translations = [];
 				if(results.rows.length > 0) {
 					for(var i = 0 ; i < results.rows.length ; i++) {
 						this.translations.push( results.rows.item(i) );
 					}
 				}
-				console.log(this.translations);
 		 }, (error) => {
 		 	console.log("ERROR: " + JSON.stringify(error));
+		 });
+	}
+
+	public getSentenceDetailsFromDB(sentence_text:String) {
+		return this.database.executeSql("SELECT * FROM sentences WHERE sentence = ?", [sentence_text]).then((results) => {
+			if (results.rows.length == 1) {
+				return results.rows.item(0);
+			} 
+			else if (results.rows.length > 1) {
+				throw "[Error in Database] Two sentences with same sentence text are present";
+			}
+			else {
+				return false;
+			}
+		})
+	}
+
+	public getSentencesFromMeaning(meaning_id: number, target_language: String) {
+		return this.database.executeSql("SELECT * FROM sentences WHERE meaning_id = ? AND language = ?",
+		 [meaning_id, target_language]).then((results) => {
+		 	this.translations = [];
+			if(results.rows.length > 0) {
+				for(var i = 0 ; i < results.rows.length ; i++) {
+					this.translations.push( results.rows.item(i) );
+				}
+			}
+			console.log(this.translations);
+			return this.translations;
+		 }, (error) => {
+		 	console.log("ERROR: " + JSON.stringify(error));
+		 	return false;
 		 });
 	}
 

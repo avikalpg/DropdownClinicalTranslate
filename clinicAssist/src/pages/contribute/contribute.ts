@@ -46,6 +46,7 @@ export class ContributePage {
 		console.log("Source language set to " + language_code);
 		this.dbms.showSentencesOfLanguage(language_code);
 		this.completeTestService.setDatabaseMode(true);
+		this.completeTestService.setShowMeaningIdInResults(true);
 		this.completeTestService.setCurrentLanguage(language_code);
 	}
 
