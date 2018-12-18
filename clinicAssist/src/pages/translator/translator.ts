@@ -78,12 +78,17 @@ export class TranslatorPage {
 			this.activity_state = false;
 		}
 		else {
-			// start activities
-			this.setLocale(this.doctorLanguage);
-			this.completeTestService.setDoctorLanguage(this.doctorLanguage);
-			this.completeTestService.setPatientLanguage(this.patientLanguage);
+			if ((this.doctorLanguage) && (this.patientLanguage)){
+				// start activities
+				this.setLocale(this.doctorLanguage);
+				this.completeTestService.setDoctorLanguage(this.doctorLanguage);
+				this.completeTestService.setPatientLanguage(this.patientLanguage);
 
-			this.activity_state = true;
+				this.activity_state = true;
+			}
+			else {
+				alert("Please select the languages first");
+			}
 		}
 	}
 
