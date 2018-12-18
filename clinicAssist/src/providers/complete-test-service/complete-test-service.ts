@@ -90,7 +90,7 @@ export class CompleteTestServiceProvider implements AutoCompleteService {
 	        "सिर के शीर्ष पर",
 	        "सिर के पीछे",
 	        "माथे पर",
-	        "Temples",
+	        "कनपटी",
 	        "भयानक दर्द",
 	        "जलन",
 	        "धड़कता दर्द",
