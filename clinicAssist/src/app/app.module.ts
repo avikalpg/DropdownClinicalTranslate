@@ -16,6 +16,10 @@ import { CompleteTestServiceProvider } from '../providers/complete-test-service/
 import { SQLite, SQLiteDatabaseConfig } from '@ionic-native/sqlite'
 import { DatabaseProvider } from '../providers/database/database';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { firebaseConfig } from './credentials';
+
 declare var SQL;
 
 class SQLiteMock {
@@ -91,6 +95,8 @@ class SQLiteObject{
     BrowserModule,
     AutoCompleteModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
