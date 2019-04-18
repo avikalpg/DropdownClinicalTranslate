@@ -34,4 +34,7 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-config.xml
+config.xmli
+
+# We do not want to upload our Firebase credentials to GitHub
+src/app/credentials.ts
