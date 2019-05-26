@@ -46,6 +46,12 @@ export class ContributePage {
 			this.new_sentence['context'], 
 			this.new_sentence['speaker'] 
 		);
+		this.new_sentence['sentence'] = "";
+		this.new_sentence['language'] = "";
+		this.new_sentence['country'] = "IN";
+		this.new_sentence['contributor'] = 0;
+		this.new_sentence['context'] = "General";
+		this.new_sentence['speaker'] = null;
 	}
 
 	changeSourceLanguage(language_code:string) {
