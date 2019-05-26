@@ -69,7 +69,18 @@ export class ContributePage {
 		let result = this.translated_sentence.match(/\[([0-9]+)\]$/i)
 		// console.log(result)
 		// console.log(result[1])
-		this.dbms.insertTranslation(this.translation['sentence'], this.translation['language'], this.translation['country'], this.translation['contributor'], parseInt(result[1]));
+		this.dbms.insertTranslation(
+			this.translation['sentence'],
+			this.translation['language'],
+			this.translation['country'],
+			this.translation['contributor'],
+			parseInt(result[1])
+		);
+		this.translation['sentence'] = "";
+		this.translation['language'] = "";
+		this.translation['country'] = "IN";
+		this.translation['contributor'] = 0;
+		this.translated_sentence = ""
 	}
 
 	showTables() {
