@@ -38,8 +38,14 @@ export class ContributePage {
 
 	newForm() {
 		console.log(this.new_sentence);
-		this.dbms.insertNewSentence(this.new_sentence['sentence'], this.new_sentence['language'], this.new_sentence['country'], 
-			this.new_sentence['contributor'], this.new_sentence['context'], this.new_sentence['speaker'] );
+		this.dbms.insertNewSentence(
+			this.new_sentence['sentence'], 
+			this.new_sentence['language'], 
+			this.new_sentence['country'], 
+			this.new_sentence['contributor'], 
+			this.new_sentence['context'], 
+			this.new_sentence['speaker'] 
+		);
 	}
 
 	changeSourceLanguage(language_code:string) {
