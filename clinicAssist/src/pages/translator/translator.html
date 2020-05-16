@@ -1,70 +1,101 @@
 <!--
-  Generated template for the TranslatorPage page.
+	Generated template for the TranslatorPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
+	See http://ionicframework.com/docs/components/#navigation for more info on
+	Ionic pages and navigation.
 -->
 <ion-header>
 
-  <ion-navbar>
-  	<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Auto-Translator</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Auto-Translator</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<ion-grid>
-		<!-- <ion-row>
-			<div ion-col col-6>
-				{{textView_doctorLanguage}}
-				<ion-select [(ngModel)]="doctorLanguage">
+	<div style="display:flex; height: 100%; flex-direction: column;" >
+		<ion-grid>
+			<ion-row>
+				<div ion-col col-6>
+					{{doctorLanguageLabel}}
+				</div>
+				<div ion-col col-6>
+					{{patientLanguageLabel}}
+				</div>
+			</ion-row>
+			<ion-row>
+				<!-- <ion-select ion-col col-6 [(ngModel)]="doctorLanguage" interface='action-sheet'> -->
+				<ion-select ion-col col-6 [(ngModel)]="doctorLanguage" interface='popover'>
 					<ion-option value="en">English</ion-option>
 					<ion-option value="af">Afrikaans</ion-option>
 					<ion-option value="hi">Hindi</ion-option>
-					<ion-option value="pt">Portugese</ion-option>
+					<ion-option value="pt">Portuguese</ion-option>
 				</ion-select>
-			</div>
-			<div ion-col col-6>
-				{{textView_patientLanguage}}
-				<ion-select [(ngModel)]="patientLanguage">
+				<ion-select ion-col col-6 [(ngModel)]="patientLanguage" interface='popover'>
 					<ion-option value="en">English</ion-option>
 					<ion-option value="af">Afrikaans</ion-option>
 					<ion-option value="hi">Hindi</ion-option>
-					<ion-option value="pt">Portugese</ion-option>
+					<ion-option value="pt">Portuguese</ion-option>
 				</ion-select>
-			</div>
-		</ion-row> -->
-		<ion-row>
-			<div ion-col col-6>
-				{{textView_doctorLanguage}}
-			</div>
-			<div ion-col col-6>
-				{{textView_patientLanguage}}
-			</div>
-		</ion-row>
-		<ion-row>
-			<ion-select ion-col col-6 [(ngModel)]="doctorLanguage">
-				<ion-option value="en">English</ion-option>
-				<ion-option value="af">Afrikaans</ion-option>
-				<ion-option value="hi">Hindi</ion-option>
-				<ion-option value="pt">Portugese</ion-option>
-			</ion-select>
-			<ion-select ion-col col-6 [(ngModel)]="patientLanguage">
-				<ion-option value="en">English</ion-option>
-				<ion-option value="af">Afrikaans</ion-option>
-				<ion-option value="hi">Hindi</ion-option>
-				<ion-option value="pt">Portugese</ion-option>
-			</ion-select>
-		</ion-row>
-		<ion-row>
-			<input type="text" name="doctor_language" placeholder="Doctor's Language" [(ngModel)]="doctorLanguage">
-			<input type="text" name="patient_language" placeholder="Patient's Language" [(ngModel)]="patientLanguage"><br>
-		</ion-row>
-		<button ion-row ion-button>Start</button>
-	</ion-grid>
+			</ion-row>
+			<!-- <ion-row>
+				<input type="text" name="doctor_language" placeholder="Doctor's Language" [(ngModel)]="doctorLanguage">
+				<input type="text" name="patient_language" placeholder="Patient's Language" [(ngModel)]="patientLanguage"><br>
+			</ion-row> -->
+			<ng-template #start_text>Start</ng-template>
+			<ng-template #reset_text>Reset</ng-template>
+			<button ion-row ion-button (click)="selectLanguage()">
+				<div *ngIf="!activity_state; then start_text else reset_text"></div>
+			</button>
+
+		</ion-grid>
+		
+		<ion-scroll scrollY=true style="flex: 1 0 0;" >
+			<ion-grid>
+				<ion-row *ngFor="let message of conversation">
+				  <ion-col col-9 *ngIf="message.sender_is_left && current_language == doctorLanguage" class="message" [ngClass]="{'mymessage': !message.sender_is_left, 'othermessage': message.sender_is_left}">
+					<!-- <span class="user_name">{{ message.sender_is_left }}:</span><br> -->
+					<span>{{ message.left_text }}</span>
+					<div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+				  </ion-col>
+
+				  <ion-col col-9 *ngIf="message.sender_is_left && current_language != doctorLanguage" class="message" [ngClass]="{'mymessage': !message.sender_is_left, 'othermessage': message.sender_is_left}">
+					<!-- <span class="user_name">{{ message.sender_is_left }}:</span><br> -->
+					<span>{{ message.right_text }}</span>
+					<div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+				  </ion-col>
+
+				  <ion-col offset-3 col-9 *ngIf="!message.sender_is_left && current_language == patientLanguage" class="message" [ngClass]="{'mymessage': !message.sender_is_left, 'othermessage': message.sender_is_left}">
+					<!-- <span class="user_name">{{ message.sender_is_left }}:</span><br> -->
+					<span>{{ message.right_text }}</span>
+					<div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+				  </ion-col>
+
+				  <ion-col offset-3 col-9 *ngIf="!message.sender_is_left && current_language != patientLanguage" class="message" [ngClass]="{'mymessage': !message.sender_is_left, 'othermessage': message.sender_is_left}">
+					<!-- <span class="user_name">{{ message.sender_is_left }}:</span><br> -->
+					<span>{{ message.left_text }}</span>
+					<div class="time">{{message.created | date:'dd.MM hh:MM'}}</div>
+				  </ion-col>
+				</ion-row>
+			  </ion-grid>
+		</ion-scroll>
+
+		<ion-grid *ngIf="activity_state">
+			<!-- <ion-auto-complete [dataProvider]="completeTestService" >Type</ion-auto-complete> -->
+			<ion-row>
+				<ion-auto-complete [dataProvider]="completeTestService" [(ngModel)]="text_field_content" [options]="{ placeholder : 'Type here...' }" [showResultsFirst]="true" style="width: 75%" #myTextBox></ion-auto-complete>
+				<button ion-button ion-col col-2 class="send-icon-button" (click)="sendMessage()" round icon-only>
+					<ion-icon name="send"></ion-icon>
+				</button>
+			</ion-row>
+
+			<button ion-button ion-row (click)="translate()">Translate</button>
+		</ion-grid>
+	</div>
+		<!-- <button ion-row ion-button style="position:fixed; bottom:30px;">Translate</button> -->
 
 </ion-content>

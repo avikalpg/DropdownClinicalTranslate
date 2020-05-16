@@ -1,0 +1,10 @@
+page-contribute {
+	ion-auto-complete {
+		.searchbar-search-icon { display:none; width:0; height:0; }
+		.searchbar-input { 
+			margin-left: 10px;
+			margin-bottom: 5px;
+			padding-left: 10px !important;
+		}
+	}
+}
